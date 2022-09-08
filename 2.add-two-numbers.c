@@ -71,19 +71,21 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
         if (!l2)
                 return l1;
         int carry = 0;
-        struct ListNode *current, *ans;
+        struct ListNode *current, *ans, *last;
         ans = (struct ListNode*)malloc(sizeof(struct ListNode));
         current = ans;
         while (l1 != NULL || l2 != NULL || carry != 0) {
-                carry = ((l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry) / 10;
-                current->val = ((l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry) % 10;
-                if (l1)
+                current->val = ((l1 != NULL ? l1->val : 0) + (l2 != NULL ? l2->val : 0) + carry) % 10;
+                carry = ((l1 != NULL ? l1->val : 0) + (l2 != NULL ? l2->val : 0) + carry) / 10;
+                if (l1 != NULL)
                         l1 = l1->next;
-                if (l2)
+                if (l2 != NULL)
                         l2 = l2->next;
+                last = current;
                 current->next = (struct ListNode*)malloc(sizeof(struct ListNode));
+                current = current->next;
         }
-        current->next = NULL;
+        last->next = NULL;
         free(current);
         return ans;
 }
