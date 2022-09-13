@@ -15,6 +15,7 @@ char * longestCommonPrefix(char ** strs, int strsSize){
             printf("malloc error");
             return NULL;
     }
+    // initialize memory for empty prefix return
     memset(returnChar, '\0', sizeof(char));
     for (int charIndex = 0; strs[0][charIndex] != '\0'; charIndex++) {
         // take character of the first string as comparing sample
@@ -25,6 +26,7 @@ char * longestCommonPrefix(char ** strs, int strsSize){
                 goto end;
             }
         }
+        // allocate 2 new memory space for new prefix and '\0'
         newPtr = realloc(returnChar, ((charIndex + 2) * sizeof(char)));
         if(newPtr == NULL){
             printf("realloc error\n");
