@@ -15,38 +15,28 @@ char * longestCommonPrefix(char ** strs, int strsSize){
             printf("malloc error");
             return NULL;
     }
-    // returnChar = newPtr;
-    // free(newPtr);
+    memset(returnChar, '\0', sizeof(char));
     for (int charIndex = 0; strs[0][charIndex] != '\0'; charIndex++) {
         // take character of the first string as comparing sample
-        // printf("%d %c   ", charIndex, compareChar);
         strncpy(&compareChar, &strs[0][charIndex], 1);
-        printf("%d %c   ", charIndex, compareChar);
         for (int strIndex = 1; strIndex < strsSize; strIndex++) {
             // compare character of the same position, if any not comparison go to the end
-            // printf("%d/%d %c   ", strIndex, charIndex, compareChar);
-            // if (compareChar != strs[strIndex][charIndex]) {
-                // printf("%d %c\n", charIndex, compareChar);
-                // goto end;
-            // }
-            // printf("%s  \n", returnChar);
+            if (compareChar != strs[strIndex][charIndex]) {
+                goto end;
+            }
         }
-        // printf("%d %c   ", charIndex, compareChar);
-        // newPtr = realloc(returnChar, ((charIndex + 2) * sizeof(char)));
-        // printf("iii%s", newPtr);
+        newPtr = realloc(returnChar, ((charIndex + 2) * sizeof(char)));
         if(newPtr == NULL){
             printf("realloc error\n");
             return NULL;
         }
         returnChar = newPtr;
-        // free(newPtr);
-        // printf("%ciiii", compareChar);
-        strcat(&returnChar[charIndex], &compareChar);
-        printf("iii%s", returnChar);
+        strncpy(returnChar + charIndex, &compareChar, 1);
+        strncpy(returnChar + charIndex + 1, "\0", 1);
     }
-    // end:
+    end:
     
-    return strs[0];
+    return returnChar;
 }
 // @lc code=end
 
