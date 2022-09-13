@@ -11,23 +11,38 @@
  * The sizes of the arrays are returned as *returnColumnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
-struct node{
-    int remainTarget, now;
-    struct node* back;
-};
+typedef struct node{
+    int now;
+    int remainTarget;
+    struct node *back;
+} NODE;
 
-typedef struct node NODE;
-
-NODE* newNode(int remainTarget, int now, NODE* back, NODE* reNode){
+//create node with remain target value
+void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
     reNode->remainTarget = remainTarget;
     reNode->now = now;
     reNode->back = back;
-    return reNode;
+}
+
+//use deep first search to find corresponding set
+int** DFS(int* candidates, NODE* node, int** list){
+    return node;
 }
 
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
-    NODE* reNode;
-    newNode();
+    /**
+     * Data types:
+     *  candidatesSize : how many candidates we having
+     *  candidates : pointer to the first candidate
+     *  target : target number
+     *  returnSize : how mant array we return
+     *  returnColumnSizes : an array store size of each sub-array 
+     */
+    int** list;
+    NODE* root;
+    root = (NODE*)malloc(sizeof(NODE));
+    newNode(target, candidatesSize, root, NULL);
+    return DFS(candidates, root, list);
 }
 // @lc code=end
 
