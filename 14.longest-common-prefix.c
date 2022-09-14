@@ -11,10 +11,10 @@ char * longestCommonPrefix(char ** strs, int strsSize){
     char compareChar;
     char *returnChar, *newPtr;
     returnChar = (char*)malloc(sizeof(char));   //size of char and size of char pointer is different
-    if (returnChar == NULL) {
-        printf("malloc error");
-        return NULL;
-    }
+    // if (returnChar == NULL) {
+    //     printf("malloc error");
+    //     return NULL;
+    // }
     // initialize memory for empty prefix return
     memset(returnChar, '\0', sizeof(char));
     for (int charIndex = 0; strs[0][charIndex] != '\0'; charIndex++) {
@@ -27,12 +27,12 @@ char * longestCommonPrefix(char ** strs, int strsSize){
             }
         }
         // allocate 2 new memory space for new prefix and '\0'
-        newPtr = realloc(returnChar, ((charIndex + 2) * sizeof(char)));
-        if(newPtr == NULL){
-            printf("realloc error\n");
-            return NULL;
-        }
-        returnChar = newPtr;
+        returnChar = realloc(returnChar, ((charIndex + 2) * sizeof(char)));
+        // if(newPtr == NULL){
+        //     printf("realloc error\n");
+        //     return NULL;
+        // }
+        // returnChar = newPtr;
         strncpy(returnChar + charIndex, &compareChar, 1);
         strncpy(returnChar + charIndex + 1, "\0", 1);
     }
