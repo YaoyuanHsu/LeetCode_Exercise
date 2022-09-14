@@ -32,48 +32,40 @@ void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
 void addList(int* list, int num){
     int listSize = sizeof(list)/sizeof(int);
     int *ptr = realloc(list, (++listSize) * sizeof(int));
-    if(!ptr){
+    if(!ptr)
         printf("realloc error\n");
-        return ;
-    }
     list = ptr;
     *(list + listSize) = num;
 }
 
 // use deep first search to find corresponding set
-int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int preNum){
-    // printf("preNum: %d\n", preNum);
-
+void DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int preNum){
     // if find the list, add the number to the list
     if(remain->remainTarget == 0){
         int* returnList = NULL;
         addList(returnList, preNum);
     }
-    // recursive
-    for(; remain->now != 0; remain->now--){
-        // not fail select correct candidate
-        if(*(candidates + remain->now - 1) > remain->remainTarget) break;
-
-        remain->remainTarget -= *(candidates + remain->now - 1);
-        int* ptr = DFS(candidates, remain, list, returnSize, returnColumnSizes, *(candidates + remain->now - 1));
-        if(ptr){
-            if(preNum != 0){   // not root, add previous number and return
-                addList(ptr, preNum);
-            }
-            else{   // if it is root, we find the answer
-                *returnSize++;
-                int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
-                if(!nptr){
-                    printf("realloc error\n");
-                    return NULL;
+    else{
+        // recursive
+        for(; remain->now != 0; remain->now--){
+            // not fail select correct candidate
+            if(*(candidates + remain->now - 1) > remain->remainTarget) break;
+            remain->remainTarget -= *(candidates + remain->now - 1);
+            DFS(candidates, remain, list, returnSize, returnColumnSizes, *(candidates + remain->now - 1));
+            if(sizeof(list) != 0){
+                if(preNum != 0)   // not root, add previous number and return
+                    addList(list, preNum);
+                else{   // if it is root, we find the answer
+                    *returnSize++;
+                    int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
+                    if(!nptr)
+                        printf("realloc error\n");
+                    returnColumnSizes = nptr;
+                    *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(list) / sizeof(int) + 1;
                 }
-                returnColumnSizes = nptr;
-                *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(ptr) / sizeof(int) + 1;
             }
-            return ptr;
         }
     }
-    return NULL;
 }
 
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
