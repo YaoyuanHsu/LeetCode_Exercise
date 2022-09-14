@@ -11,6 +11,8 @@
  * The sizes of the arrays are returned as *returnColumnSizes array.
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
+#define NULL ((char*)0)
+
 typedef struct node{
     int now;    // which candidate we last use, not the index of candidate
     int listSize;
@@ -43,13 +45,17 @@ int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** retur
     printf("preNum: %d\n", preNum);
     // not success
     if (remain->now == 1 && *(candidates + remain->now) > remain->remainTarget)
-        return (int*)0;
+        return NULL;
 
     // not fail select correct candidate
     while(*candidates + remain->now - 1 > remain->remainTarget){
         if(remain->now == 1)    //not success
             return NULL;
         remain->now--;
+    }
+
+    if(*candidates + remain->now - 1 == remain->remainTarget){
+        int* returnList = NULL;
     }
 
     // recursive
@@ -64,14 +70,14 @@ int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** retur
             int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
             if(!nptr){
                 printf("realloc error\n");
-                return (int*)0;
+                return NULL;
             }
             returnColumnSizes = nptr;
             *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(ptr) / sizeof(int) + 1;
         }
         return ptr;
     }
-    return (int*)0;
+    return NULL;
 }
 
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
@@ -86,7 +92,7 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
     NODE* root;
     int **list;
     root = (NODE*)malloc(sizeof(NODE));
-    newNode(target, candidatesSize, root, (int*)0);
+    newNode(target, candidatesSize, root, NULL);
     DFS(candidates, root, list, returnSize, returnColumnSizes, 0);
     return list;
 }
