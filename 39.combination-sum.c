@@ -12,12 +12,12 @@
  * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
  */
 typedef struct node{
-    int now;
+    int now;    // which candidate we last use, not the index of candidate
     int remainTarget;
     struct node *back;
 } NODE;
 
-//create node with remain target value
+// create node with remain target value
 void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
     reNode->remainTarget = remainTarget;
     reNode->now = now;
@@ -25,8 +25,26 @@ void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
 }
 
 //use deep first search to find corresponding set
-int** DFS(int* candidates, NODE* node, int** list){
-    return node;
+int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes){
+    // store remain condition or not?
+    if (*candidates + remain->now - 1 <= remain->remainTarget){ // choose the candidate
+        if(remain->remainTarget - (*candidates + remain->now - 1) == 0){ // find the candidate list
+
+        }
+        else{   // unfinished and recursive
+            NODE* child;
+            child = (NODE*)malloc(sizeof(NODE));
+            newNode(remain->remainTarget - (*candidates + remain->now - 1), remain->now, );
+            DFS(candidates, child, list, returnSize, returnColumnSizes);
+        }
+    }
+    else if (remain->now == 1){ // run out off candidates, this candidate list not success
+
+    }
+    else{   // check the next candidate
+
+    }
+    return list;
 }
 
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
@@ -42,7 +60,7 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
     NODE* root;
     root = (NODE*)malloc(sizeof(NODE));
     newNode(target, candidatesSize, root, NULL);
-    return DFS(candidates, root, list);
+    return DFS(candidates, root, list, returnSize, returnColumnSizes);
 }
 // @lc code=end
 
