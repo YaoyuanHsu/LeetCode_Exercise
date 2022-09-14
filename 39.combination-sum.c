@@ -54,6 +54,7 @@ int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** retur
         remain->now--;
     }
 
+    // if find the string, add the number to the list
     if(*candidates + remain->now - 1 == remain->remainTarget){
         int* returnList = NULL;
         addList(returnList, remain->remainTarget);
