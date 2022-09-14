@@ -24,6 +24,17 @@ void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
     reNode->back = back;
 }
 
+// expanded list and add new number
+void addList(int* list, int num, int listSize){
+    int *ptr = realloc(list, (++listSize) * sizeof(int));
+    if(!ptr){
+        printf("realloc error\n");
+        return NULL;
+    }
+    list = ptr;
+    *(list + listSize) = num;
+}
+
 //use deep first search to find corresponding set
 int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes){
     // store remain condition or not?
