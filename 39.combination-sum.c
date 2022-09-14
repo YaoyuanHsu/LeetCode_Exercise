@@ -68,7 +68,6 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
      *  returnSize : how mant array we return
      *  returnColumnSizes : an array store size of each sub-array 
      */
-    int** list;
     NODE* root;
     int **list, *subList;
     subList = NULL;
