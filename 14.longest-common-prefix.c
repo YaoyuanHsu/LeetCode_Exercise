@@ -10,10 +10,10 @@
 char * longestCommonPrefix(char ** strs, int strsSize){
     char compareChar;
     char *returnChar, *newPtr;
-    returnChar = (char*)malloc(sizeof(char));
+    returnChar = (char*)malloc(sizeof(char));   //size of char and size of char pointer is different
     if (returnChar == NULL) {
-            printf("malloc error");
-            return NULL;
+        printf("malloc error");
+        return NULL;
     }
     // initialize memory for empty prefix return
     memset(returnChar, '\0', sizeof(char));
