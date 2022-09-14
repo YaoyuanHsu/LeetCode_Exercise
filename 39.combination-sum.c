@@ -42,42 +42,36 @@ void addList(int* list, int num){
 
 // use deep first search to find corresponding set
 int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int preNum){
-    printf("preNum: %d\n", preNum);
-    // not success
-    if (remain->now == 1 && *(candidates + remain->now) > remain->remainTarget)
-        return NULL;
+    // printf("preNum: %d\n", preNum);
 
-    // not fail select correct candidate
-    while(*candidates + remain->now - 1 > remain->remainTarget){
-        if(remain->now == 1)    //not success
-            return NULL;
-        remain->now--;
-    }
-
-    // if find the string, add the number to the list
-    if(*candidates + remain->now - 1 == remain->remainTarget){
+    // if find the list, add the number to the list
+    if(remain->remainTarget == 0){
         int* returnList = NULL;
-        addList(returnList, remain->remainTarget);
+        addList(returnList, preNum);
     }
-
     // recursive
-    remain->remainTarget -= *(candidates + remain->now - 1);
-    int* ptr = DFS(candidates, remain, list, returnSize, returnColumnSizes, *(candidates + remain->now - 1));
-    if(ptr){
-        if(preNum != 0){   // not root, add previous number and return
-            addList(ptr, preNum);
-        }
-        else{   // if it is root, we find the answer
-            *returnSize++;
-            int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
-            if(!nptr){
-                printf("realloc error\n");
-                return NULL;
+    for(; remain->now != 0; remain->now--){
+        // not fail select correct candidate
+        if(*(candidates + remain->now - 1) > remain->remainTarget) break;
+
+        remain->remainTarget -= *(candidates + remain->now - 1);
+        int* ptr = DFS(candidates, remain, list, returnSize, returnColumnSizes, *(candidates + remain->now - 1));
+        if(ptr){
+            if(preNum != 0){   // not root, add previous number and return
+                addList(ptr, preNum);
             }
-            returnColumnSizes = nptr;
-            *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(ptr) / sizeof(int) + 1;
+            else{   // if it is root, we find the answer
+                *returnSize++;
+                int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
+                if(!nptr){
+                    printf("realloc error\n");
+                    return NULL;
+                }
+                returnColumnSizes = nptr;
+                *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(ptr) / sizeof(int) + 1;
+            }
+            return ptr;
         }
-        return ptr;
     }
     return NULL;
 }
