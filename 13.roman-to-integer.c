@@ -15,11 +15,10 @@
  * D             500
  * M             1000
  */
-#include <string.h>
 
 int romanToInt(char* s) {
 	int ans = 0, length = strlen(s);
-	int strArray[20] = {0};
+	int *strArray = calloc(length, sizeof(int));
 	for(int i = 0; i < length; i++){
 		switch (s[i]) {
 			case 'I':
@@ -57,7 +56,6 @@ int romanToInt(char* s) {
 	}
 
 	for (int i = 0; i < length; i++) {
-		//printf("s[%d]: %c\n", i, s[i]);
 		if(i != length - 1 && strArray[i] < strArray[i + 1]){
 			ans += strArray[i+1] - strArray[i++];
 		}
