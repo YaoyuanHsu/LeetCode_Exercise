@@ -36,7 +36,8 @@ void addList(int* list, int num, int listSize){
 }
 
 //use deep first search to find corresponding set
-int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes){
+int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int* subList){
+    
     // store remain condition or not?
     if (*candidates + remain->now - 1 <= remain->remainTarget){ // choose the candidate
         if(remain->remainTarget - (*candidates + remain->now - 1) == 0){ // find the candidate list
@@ -69,9 +70,11 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
      */
     int** list;
     NODE* root;
+    int **list, *subList;
+    subList = NULL;
     root = (NODE*)malloc(sizeof(NODE));
     newNode(target, candidatesSize, root, NULL);
-    return DFS(candidates, root, list, returnSize, returnColumnSizes);
+    return DFS(candidates, root, list, returnSize, returnColumnSizes, subList);
 }
 // @lc code=end
 
