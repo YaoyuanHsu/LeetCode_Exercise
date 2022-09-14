@@ -40,18 +40,18 @@ int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** retu
     
     // store remain condition or not?
     if (*candidates + remain->now - 1 <= remain->remainTarget){ // choose the candidate
-        if(remain->remainTarget - (*candidates + remain->now - 1) == 0){ // find the candidate list
+        if(remain->remainTarget - *(candidates + remain->now - 1) == 0){ // find the candidate list
 
         }
         else{   // unfinished and recursive
             NODE* child;
             child = (NODE*)malloc(sizeof(NODE));
-            newNode(remain->remainTarget - (*candidates + remain->now - 1), remain->now, );
-            DFS(candidates, child, list, returnSize, returnColumnSizes);
+            newNode(remain->remainTarget - *(candidates + remain->now - 1), remain->now, child, remain);
+            if(!DFS(candidates, child, list, returnSize, returnColumnSizes, subList)) break;
         }
     }
     else if (remain->now == 1){ // run out off candidates, this candidate list not success
-
+        return NULL;
     }
     else{   // check the next candidate
 
