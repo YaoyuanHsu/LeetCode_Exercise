@@ -13,6 +13,7 @@
  */
 typedef struct node{
     int now;    // which candidate we last use, not the index of candidate
+    int listSize;
     int remainTarget;
     struct node *back;
 } NODE;
@@ -20,43 +21,57 @@ typedef struct node{
 // create node with remain target value
 void newNode(int remainTarget, int now, NODE* reNode, NODE* back){
     reNode->remainTarget = remainTarget;
+    reNode->listSize = back ? back->listSize + 1 : 0;
     reNode->now = now;
     reNode->back = back;
 }
 
 // expanded list and add new number
-void addList(int* list, int num, int listSize){
+void addList(int* list, int num){
+    int listSize = sizeof(list)/sizeof(int);
     int *ptr = realloc(list, (++listSize) * sizeof(int));
     if(!ptr){
         printf("realloc error\n");
-        return NULL;
+        return ;
     }
     list = ptr;
     *(list + listSize) = num;
 }
 
-//use deep first search to find corresponding set
-int** DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int* subList){
-    
-    // store remain condition or not?
-    if (*candidates + remain->now - 1 <= remain->remainTarget){ // choose the candidate
-        if(remain->remainTarget - *(candidates + remain->now - 1) == 0){ // find the candidate list
+// use deep first search to find corresponding set
+int* DFS(int* candidates, NODE* remain, int** list, int* returnSize, int** returnColumnSizes, int preNum){
+    printf("preNum: %d\n", preNum);
+    // not success
+    if (remain->now == 1 && *(candidates + remain->now) > remain->remainTarget)
+        return (int*)0;
 
-        }
-        else{   // unfinished and recursive
-            NODE* child;
-            child = (NODE*)malloc(sizeof(NODE));
-            newNode(remain->remainTarget - *(candidates + remain->now - 1), remain->now, child, remain);
-            if(!DFS(candidates, child, list, returnSize, returnColumnSizes, subList)) break;
-        }
+    // not fail select correct candidate
+    while(*candidates + remain->now - 1 > remain->remainTarget){
+        if(remain->now == 1)    //not success
+            return NULL;
+        remain->now--;
     }
-    else if (remain->now == 1){ // run out off candidates, this candidate list not success
-        return NULL;
-    }
-    else{   // check the next candidate
 
+    // recursive
+    remain->remainTarget -= *(candidates + remain->now - 1);
+    int* ptr = DFS(candidates, remain, list, returnSize, returnColumnSizes, *(candidates + remain->now - 1));
+    if(ptr){
+        if(preNum != 0){   // not root, add previous number and return
+            addList(ptr, preNum);
+        }
+        else{   // if it is root, we find the answer
+            *returnSize++;
+            int** nptr = realloc(returnColumnSizes, sizeof(returnColumnSizes) + sizeof(int**));
+            if(!nptr){
+                printf("realloc error\n");
+                return (int*)0;
+            }
+            returnColumnSizes = nptr;
+            *(*returnColumnSizes + sizeof(*returnColumnSizes) / sizeof(int*) - 1) = sizeof(ptr) / sizeof(int) + 1;
+        }
+        return ptr;
     }
-    return list;
+    return (int*)0;
 }
 
 int** combinationSum(int* candidates, int candidatesSize, int target, int* returnSize, int** returnColumnSizes){
@@ -69,11 +84,11 @@ int** combinationSum(int* candidates, int candidatesSize, int target, int* retur
      *  returnColumnSizes : an array store size of each sub-array 
      */
     NODE* root;
-    int **list, *subList;
-    subList = NULL;
+    int **list;
     root = (NODE*)malloc(sizeof(NODE));
-    newNode(target, candidatesSize, root, NULL);
-    return DFS(candidates, root, list, returnSize, returnColumnSizes, subList);
+    newNode(target, candidatesSize, root, (int*)0);
+    DFS(candidates, root, list, returnSize, returnColumnSizes, 0);
+    return list;
 }
 // @lc code=end
 
