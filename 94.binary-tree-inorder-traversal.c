@@ -18,7 +18,7 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* inorderTraversal(struct TreeNode* root, int* returnSize){
-
+        *returnSize = 0;
 }
 // @lc code=end
 
