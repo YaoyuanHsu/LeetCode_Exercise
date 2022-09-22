@@ -6,11 +6,10 @@
 
 // @lc code=start
 
-
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-int* smallerNumbersThanCurrent(int* nums, int numsSize, int* returnSize){
+int* smallerNumbersThanCurrent(int* nums, int numsSize, int* returnSize) {
     int* returnNums = calloc(numsSize, sizeof(int));
     int i, count[101] = { 0 }, all[101] = { 0 };
     for (i = 0; i < numsSize; i++)
@@ -24,4 +23,3 @@ int* smallerNumbersThanCurrent(int* nums, int numsSize, int* returnSize){
     return returnNums;
 }
 // @lc code=end
-

@@ -18,8 +18,9 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 
-void inorder(int* returnList, struct TreeNode* root, int* returnSize){
-    if(root==NULL) return 0 ;
+void inorder(int* returnList, struct TreeNode* root, int* returnSize) {
+    if (root == NULL)
+        return 0;
     inorder(returnList, root->left, returnSize);
     returnList[(*returnSize)++] = root->val;
     inorder(returnList, root->right, returnSize);
@@ -27,14 +28,15 @@ void inorder(int* returnList, struct TreeNode* root, int* returnSize){
 
 int* inorderTraversal(struct TreeNode* root, int* returnSize) {
     *returnSize = 0;
-    int *returnList = malloc(100 * sizeof(int));
+    int* returnList = malloc(100 * sizeof(int));
     inorder(returnList, root, returnSize);
     return returnList;
 }
 // @lc code=end
 
 /**
- * Given the root of a binary tree, return the inorder traversal of its nodes' values.
+ * Given the root of a binary tree, return the inorder traversal of its nodes'
+ * values.
  *
  * Example 1:
  * Input: root = [1,null,2,3]
