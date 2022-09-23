@@ -5,34 +5,31 @@
  */
 
 // @lc code=start
-#include <stdlib.h>
 
-int binLength(int var) {
-    unsigned bits;
-    for (bits = 0; var != 0; ++bits)
-        var >>= 1;
-    return bits;
-}
+// Get bit-size. (method 1)
+// temp = i;
+// count=0;
+// while(temp!=0){
+//     temp = temp>>1;
+//     count++;
+// }
+
+// Get bit-size.(method 2) faster than method 1.
+// if ((i & (i - 1)) == 0)
+//     count++;
 
 int concatenatedBinary(int n) {
-    int length = 0, size = 0;
-    long int res = 0;
-    int* binType = calloc(1, sizeof(int));
+    int mod = 1e9 + 7;
+    long ans = 0;
+    int size = 0;
     for (int i = 1; i <= n; i++) {
-        length = binLength(i);
-        binType = realloc(binType, (length + size) * sizeof(int));
-        for (int var = i, count = 0; count < length; count++) {
-            binType[size + length - 1 - count] = var % 2;
-            var /= 2;
-        }
-        size += length;
+        if ((i & (i - 1)) == 0)
+            size++;
+        ans <<= size;
+        ans |= i;
+        ans %= mod;
     }
-
-    for (int i = 0; i < size; i++) {
-        res *= 2;
-        res += binType[i];
-    }
-    return res;
+    return ans;
 }
 // @lc code=end
 
