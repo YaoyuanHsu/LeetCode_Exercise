@@ -19,24 +19,6 @@ int reverse(int x) {
                 return 0;
         }
 
-        // // if input is negative number
-        // if (negative && INT_MIN / 10 <= res) {
-        //     res *= 10;
-        //     if (INT_MIN - first <= res)
-        //         res += first;
-        //     else
-        //         return 0;
-        // }
-
-        // // if input is positive number
-        // else if (!negative && INT_MAX / 10 >= res) {
-        //     res *= 10;
-        //     if (INT_MAX - first >= res)
-        //         res += first;
-        //     else
-        //         return 0;
-        // }
-
         else
             return 0;
 
@@ -50,20 +32,6 @@ int reverse(int x) {
             if (negative ? (INT_MIN - first <= res) : (INT_MAX - first >= res))
                 return res += first;
         }
-
-        // // if input is negative number
-        // if (negative && INT_MIN / 10 <= res) {
-        //     res *= 10;
-        //     if (INT_MIN - first <= res)
-        //         return res += first;
-        // }
-
-        // // if input is positive number
-        // else if (!negative && INT_MAX / 10 >= res) {
-        //     res *= 10;
-        //     if (INT_MAX - first >= res)
-        //         return res += first;
-        // }
 
         else
             return 0;
