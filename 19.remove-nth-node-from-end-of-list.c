@@ -16,28 +16,26 @@
 typedef struct ListNode ListNode;
 
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
-    int listSize = 0;
+    int firstCheck = 1;
     ListNode *tmp, *preN, *last;
 
     tmp = head;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
         tmp = tmp->next;
 
     preN = head;
     last = NULL;
 
-    for (; tmp->next != NULL;) {
+    for (; tmp->next != NULL ;) {
         tmp = tmp->next;
         last = preN;
         preN = preN->next;
+        firstCheck = 0;
     }
 
-    if (last == head)
-        return last->next;
-
-    last = preN;
-    preN = preN->next;
+    if(firstCheck == 1)
+        return head->next;
 
     last->next = preN->next;
     return head;
