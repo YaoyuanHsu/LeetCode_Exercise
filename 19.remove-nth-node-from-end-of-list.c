@@ -24,7 +24,7 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
         tmp = tmp->next;
 
     // Move the whole set to the end
-    for (; tmp->next != NULL ;) {
+    for (; tmp->next != NULL;) {
         tmp = tmp->next;
         last = preN;
         preN = preN->next;
@@ -33,12 +33,17 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
 
     // If we wamt to remove the first number, we have to use NULL pointer.
     // Define a first number checker for checking
-    if(firstCheck == 1)
-        return head->next;
+    if (firstCheck == 1) {
+        tmp = head->next;
+        free(head);
+        return tmp;
+    }
 
     // After we find pointers of the number we wanted and the previous number,
     // reconnect the linked list
+    tmp = preN;
     last->next = preN->next;
+    free(tmp);
     return head;
 }
 // @lc code=end
