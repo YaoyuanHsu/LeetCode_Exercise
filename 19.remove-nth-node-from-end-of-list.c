@@ -13,14 +13,40 @@
  * };
  */
 
+typedef struct ListNode ListNode;
 
-struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+    int listSize = 0;
+    ListNode *tmp, *preN, *last;
 
+    tmp = head;
+
+    for (int i = 0; i < n; i++)
+        tmp = tmp->next;
+
+    preN = head;
+    last = NULL;
+
+    for (; tmp->next != NULL;) {
+        tmp = tmp->next;
+        last = preN;
+        preN = preN->next;
+    }
+
+    if (last == head)
+        return last->next;
+
+    last = preN;
+    preN = preN->next;
+
+    last->next = preN->next;
+    return head;
 }
 // @lc code=end
 
 /**
- * @brief Given the head of a linked list, remove the n^th node from the end of the list and return its head.
+ * @brief Given the head of a linked list, remove the n^th node from the end of
+ * the list and return its head.
 
  * Example 1:
  *  Input: head = [1,2,3,4,5], n = 2
@@ -39,5 +65,4 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
  *  1 <= sz <= 30
  *  0 <= Node.val <= 100
  *  1 <= n <= sz
- *
  */
