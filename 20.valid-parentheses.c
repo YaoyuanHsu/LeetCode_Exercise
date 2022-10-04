@@ -5,10 +5,6 @@
  */
 
 // @lc code=start
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-
 bool isValid(char* s) {
     int strLen = 0;
     int *brackCount, *tmp;
