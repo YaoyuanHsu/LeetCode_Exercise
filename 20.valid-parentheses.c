@@ -28,23 +28,20 @@ bool isValid(char* s) {
                 // # of left > # of right
                 if (tmp == brackCount)
                     return false;
-                *(--tmp) -= 1;
                 // Not match
-                if (*tmp != 0)
+                if (*--tmp != 1)
                     return false;
                 break;
             case ']':
                 if (tmp == brackCount)
                     return false;
-                *(--tmp) -= 2;
-                if (*tmp != 0)
+                if (*--tmp != 2)
                     return false;
                 break;
             case '}':
                 if (tmp == brackCount)
                     return false;
-                *(--tmp) -= 3;
-                if (*tmp != 0)
+                if (*--tmp != 3)
                     return false;
                 break;
             // Not brackets
