@@ -2,12 +2,10 @@
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* plusOne(int* digits, int digitsSize, int* returnSize) {
-    int carry = 0, add = 1;
+    int carry = 1;
     // Sequentially checking each digit is carry or not
     for (int i = digitsSize - 1; i >= 0; i--) {
-        digits[i] = digits[i] + carry + add;
-        // Only add at the first time
-        add = 0;
+        digits[i] = digits[i] + carry;
         if (digits[i] == 10) {
             digits[i] = 0;
             carry = 1;
