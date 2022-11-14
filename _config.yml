@@ -1,5 +1,3 @@
 theme: jekyll-theme-minimal
-# https://stackoverflow.com/a/57370526
-markdown: kramdown
 kramdown:
-    math_engine: katex
+   math_engine: null
