@@ -1,3 +1,3 @@
-# theme: jekyll-theme-minimal
-kramdown:
-   math_engine: null
+languageCode: "en-us"
+title: "Golden Hat"
+theme: "PaperMod"
