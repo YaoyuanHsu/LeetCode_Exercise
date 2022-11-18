@@ -1,7 +1,7 @@
 markdown: kramdown
 title: LeetCode Exercise
 logo: /assets/img/Profile.jpeg
-description: This is my own LeetCode exercise.
+description: This is my LeetCode exercise.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
