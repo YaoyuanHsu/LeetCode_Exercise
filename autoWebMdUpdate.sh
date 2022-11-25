@@ -15,10 +15,12 @@ git commit -m "Update question list @ `date +'%Y/%m/%d'`"
 # Update new note
 echo ====Update note file====
 git checkout master `echo $folder/$out`
-mv `echo $folder$out` `echo pages/$out`
+mv `echo $folder/$out` `echo pages/$out`
 git restore --staged `echo $folder/$out`
 git add pages/$out
 git commit -m "Update note of $out @ `date +'%Y/%m/%d'`"
 echo ====Pull all commits====
 git pull
+git reset
+git clean
 git checkout master
