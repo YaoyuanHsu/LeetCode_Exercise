@@ -4,7 +4,7 @@ echo Updated folder is $1
 echo The script will update these file to GitHub page branch:
 out=$( ls $1 | grep ".*.md" )
 echo $out
-folder=$( echo `echo $1 | sed "s&\.$&&"` )
+folder=$( echo `echo $1 | sed "s&\.$&&" | sed "s&/$&&"` )
 # Change to GitHub branch
 git checkout gh-pages
 # Update index file
@@ -14,9 +14,9 @@ git add index.md
 git commit -m "Update question list @ `date +'%Y/%m/%d'`"
 # Update new note
 echo ====Update note file====
-git checkout master `echo $folder$out`
+git checkout master `echo $folder/$out`
 mv `echo $folder$out` `echo pages/$out`
-git restore --staged `echo $folder$out`
+git restore --staged `echo $folder/$out`
 git add pages/$out
 git commit -m "Update note of $out @ `date +'%Y/%m/%d'`"
 echo ====Pull all commits====
