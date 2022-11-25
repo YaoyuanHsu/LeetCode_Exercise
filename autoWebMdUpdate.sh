@@ -8,12 +8,14 @@ folder=$( echo `echo $1 | sed "s&\.$&&"` )
 # Change to GitHub branch
 git checkout gh-pages
 # Update index file
+echo ====Update index.md file====
 git checkout index.md
 git add index.md
 git commit -m "Update question list @ `date +'%Y/%m/%d'`"
 # Update new note
+echo ====Update note file====
 git chekout master `echo $folder$out`
-mv `echo $folder$out` `echo ./pages/$out`
+mv `echo $folder$out` `echo pages/$out`
 git restore --staged `echo $folder$out`
 git add pages/$out
 git commit -m "Update note of $out @ `date +'%Y/%m/%d'`"
