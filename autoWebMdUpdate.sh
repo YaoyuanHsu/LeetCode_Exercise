@@ -6,7 +6,7 @@ out=$( ls $1 | grep ".*.md" )
 echo $out
 folder=$( echo `echo $1 | sed "s&\.$&&"` )
 # Change to GitHub branch
-#git checkout gh-pages
+git checkout gh-pages
 # Update index file
 git checkout index.md
 git add index.md
