@@ -20,7 +20,7 @@ git restore --staged `echo $folder/$out`
 git add pages/$out
 git commit -m "Update note of $out @ `date +'%Y/%m/%d'`"
 echo ====Pull all commits====
-git pull
+git push
 git reset
 git clean
 git checkout master
