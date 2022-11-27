@@ -9,7 +9,7 @@ folder=$( echo `echo $1 | sed "s&\.$&&" | sed "s&/$&&"` )
 git checkout gh-pages
 # Update index file
 echo ====Update index.md file====
-git checkout index.md
+git checkout master index.md
 git add index.md
 git commit -m "Update question list @ `date +'%Y/%m/%d'`"
 # Update new note
