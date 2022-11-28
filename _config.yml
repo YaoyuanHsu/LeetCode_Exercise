@@ -3,7 +3,7 @@ title: LeetCode Exercise
 logo: /assets/img/Profile.jpeg
 description: This is my LeetCode exercise.<br>
   You can see all question I did <a herf="https://yaoyuanhsu.github.io/LeetCode_Exercise/">here</a>.<br>
-  Or you can find my  <a href="{{ https://yaoyuanhsu.github.io/Yuanster/ }}">{{ personal website }}</a> here.
+  Or you can find my [personal website](% link https://yaoyuanhsu.github.io/Yuanster/) here.
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
