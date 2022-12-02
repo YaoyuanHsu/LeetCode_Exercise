@@ -1,18 +1,13 @@
-/*
- * @lc app=leetcode id=7 lang=c
- *
- * [7] Reverse Integer
- */
-
-// @lc code=start
 #include <limits.h>
 
 int reverse(int x) {
     int* check = malloc(sizeof(int));
     int negative = (x < 0), first = x % 10, remain = x / 10, res = 0;
     while (remain != 0) {
+        // By negative number or not checking whether it will get overflow after times 10
         if (negative ? (INT_MIN / 10 <= res) : (INT_MAX / 10 >= res)) {
             res *= 10;
+            // By negative number or not checking whether it will get overflow after plus first
             if (negative ? (INT_MIN - first <= res) : (INT_MAX - first >= res))
                 res += first;
             else
@@ -22,10 +17,12 @@ int reverse(int x) {
         else
             return 0;
 
+        // Re-update first and remain
         first = remain % 10;
         remain = remain / 10;
     }
 
+    // If there still has any un-operating number in first
     if (first != 0) {
         if (negative ? (INT_MIN / 10 <= res) : (INT_MAX / 10 >= res)) {
             res *= 10;
@@ -39,28 +36,3 @@ int reverse(int x) {
 
     return res;
 }
-// @lc code=end
-
-/**
- * @brief Given a signed 32-bit integer x, return x with its digits reversed.
- * If reversing x causes the value to go outside the signed 32-bit integer
- * range [-2^31, 2^31 - 1], then return 0.
-
- * Assume the environment does not allow you to store 64-bit
- * integers (signed or unsigned).
-
- * Example 1:
- *  Input: x = 123
- *  Output: 321
-
- * Example 2:
- *  Input: x = -123
- *  Output: -321
-
- * Example 3:
- *  Input: x = 120
- *  Output: 21
-
- * Constraints:
- *  -2^31 <= x <= 2^31 - 1
- */
