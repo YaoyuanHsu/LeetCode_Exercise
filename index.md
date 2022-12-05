@@ -1,5 +1,6 @@
 ###### tags: `leetcode`
 # My LeetCode list
+## [2256. Minimum Average Difference(2022.12.05)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/2256.Minimum_Average_Difference)
 ## [876. Middle of the Linked List(2022.12.05)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/876.Middle_of_the_Linked_List)  
 ## [451. Sort Characters By Frequency(2022.12.04)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/451.Sort_Characters_By_Frequency)
 ## [1657. Determine if Two Strings Are Close(2022.12.02)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/1657.Determine_if_Two_Strings_Are_Close)  
