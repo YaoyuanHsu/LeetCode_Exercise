@@ -1,3 +1,5 @@
+// Way 1
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -27,3 +29,25 @@ struct ListNode* middleNode(struct ListNode* head) {
             return slow;
     }
 }
+
+// Way 2
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+/**
+struct ListNode* middleNode(struct ListNode* head) {
+    int count;
+    struct ListNode* tmp;
+    for (count = 0, tmp = head; tmp; count++)
+        tmp = tmp->next;
+    count /= 2;
+    for (int i = 0; i < count; i++)
+        head = head->next;
+    return head;
+}
+*/
