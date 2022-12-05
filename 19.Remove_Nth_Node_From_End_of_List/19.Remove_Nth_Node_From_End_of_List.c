@@ -1,3 +1,4 @@
+// Way 1
 typedef struct ListNode ListNode;
 
 struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
@@ -31,3 +32,39 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
     free(tmp);
     return head;
 }
+
+// Way 2
+/*
+typedef struct ListNode ListNode;
+
+struct ListNode* removeNthFromEnd(struct ListNode* head, int n) {
+    int firstCheck = 1, index = 1;
+    ListNode *tmp = head, *preN = head, *last = NULL;
+
+    // Find the distance with input number
+    for (; tmp->next ; index++)
+        tmp = tmp->next;
+
+    // If ther has only one node
+    if(index == 1){
+        free(head);
+        return NULL;
+    }
+
+    // Find the last N_th node and the last N+1_th node
+    for(int count = 0 ; count < index - n ; count++){
+        last = preN;
+        preN = preN->next;
+    }
+
+    // Checking if we want to remove the head
+    if(index - n){
+        last->next = preN->next;
+        free(preN);
+    }
+    else
+        head = head->next;
+
+    return head;
+}
+*/
