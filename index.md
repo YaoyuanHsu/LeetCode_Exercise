@@ -13,6 +13,7 @@
 ## [223. Rectangle Area(2022.11.17)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/223.Rectangle_Area)  
 ## [66. Plus One(2022.11.12)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/66.Plus_One)  
 ## [26. Remove Duplicates from Sorted Array(2022.11.07)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/26.Remove_Duplicates_from_Sorted_Array)  
+## [21. Merge Two Sorted Lists(2022.10.28)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/21.Merge_Two_Sorted_Lists)  
 ## [263. Ugly Number(2022.10.10)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/263.Ugly_Number)  
 ## [20. Valid Parentheses(2022.10.04)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/20.Valid_Parentheses)  
 ## [19. Remove Nth Node From End of List(2022.09.29)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/19.Remove_Nth_Node_From_End_of_List)  
