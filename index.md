@@ -14,6 +14,7 @@
 ## [66. Plus One(2022.11.12)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/66.Plus_One)  
 ## [26. Remove Duplicates from Sorted Array(2022.11.07)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/26.Remove_Duplicates_from_Sorted_Array)  
 ## [263. Ugly Number(2022.10.10)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/263.Ugly_Number)  
+## [20. Valid Parentheses(2022.10.04)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/20.Valid_Parentheses)  
 ## [19. Remove Nth Node From End of List(2022.09.29)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/19.Remove_Nth_Node_From_End_of_List)  
 ## [1680.Concatenation Of Consecutive Binary Numbers(2022.09.23)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/1680.Concatenation_Of_Consecutive_Binary_Numbers)  
 ## [7. Reverse Integer(2022.09.23)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/7.Reverse_Integer)  
