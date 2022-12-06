@@ -22,6 +22,7 @@
 # [557. Reverse Words in a String III(2022.09.22)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/557.Reverse_Words_in_a_String_III)  
 ## [69. Sqrt(x)(2022.09.22)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/69.Sqrt_x)  
 ## [50. Pow(x, n)(2022.09.22)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/50.Pow(x,%20n))  
+# [1313. Decompress Run-Length Encoded List(2022.09.21)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/1313.Decompress_Run-Length_Encoded_List)  
 ## [94. Binary Tree Inorder Traversal(2022.09.15)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/94.Binary_Tree_Inorder_Traversal)  
 ## [14. Longest Common Prefix(2022.09.13)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/14.Longest_Common_Prefix)  
 ## [13. Roman to Integer(2022.09.12)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/13.Roman_to_Integer)  
