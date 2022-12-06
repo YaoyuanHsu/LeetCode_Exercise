@@ -1,11 +1,3 @@
-/*
- * @lc app=leetcode id=1365 lang=c
- *
- * [1365] How Many Numbers Are Smaller Than the Current Number
- */
-
-// @lc code=start
-
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
@@ -22,4 +14,3 @@ int* smallerNumbersThanCurrent(int* nums, int numsSize, int* returnSize) {
     *returnSize = numsSize;
     return returnNums;
 }
-// @lc code=end
