@@ -1,5 +1,6 @@
 ###### tags: `leetcode`
 # My LeetCode list
+# [1026. Maximum Difference Between Node and Ancestor(2022.12.09)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/1026.Maximum_Difference_Between_Node_and_Ancestor)
 ## [872. Leaf-Similar Trees(2022.12.08)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/872.Leaf-Similar_Trees)  
 ## [938. Range Sum of BST(2022.12.07)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/938.Range_Sum_of_BST)  
 ## [328. Odd Even Linked List(2022.12.06)](https://yaoyuanhsu.github.io/LeetCode_Exercise/pages/328.Odd_Even_Linked_List)  
