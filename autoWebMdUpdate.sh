@@ -3,7 +3,7 @@
 echo Updated folder is $1
 echo The script will update these file to GitHub page branch:
 out=$( ls $1 | grep ".*.md" )
-echo "\t$out"
+echo -e "\t$out"
 folder=$( echo `echo $1 | sed "s&\.$&&" | sed "s&/$&&"` )
 # Change to GitHub branch
 git checkout gh-pages
